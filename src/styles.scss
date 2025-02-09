@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Arial;
+  src: url("assets/fonts/ArialMT.ttf");
+}
+
+@font-face {
+  font-family: ArialBold;
+  src: url("assets/fonts/Arial-BoldMT.ttf");
+  font-weight: bold;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.form-control {
+  border-color: #ced4da;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #007BFF;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.btn-outline-primary {
+  --bs-btn-color:#007BFF;
+  --bs-btn-border-color: #007BFF;
+}
+
+.btn-primary {
+  --bs-btn-bg: #076BFF;
+  --bs-btn-border-color: #076BFF;
+}
+
+h3.bg-primary {
+  background: linear-gradient(360deg, #076bff 0%, #007bff 100%);
+}
+
+.ui-icon {
+  display: none;
+}
+
+.arrow {
+  float: right;
+  font-size: 1.4rem;
+  transform: rotate(90deg);
+}
+
+.arrow::before {
+  content: '\276F';
+}
+
+.rotate{
+  transform: rotate(270deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.reset {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 424px) {
+  .arrow{
+    display:none;
+  }
+}
