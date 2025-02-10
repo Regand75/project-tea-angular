@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { ProductCardComponent } from './components/common/product-card/product-card.component';
 import { MainComponent } from './components/pages/main/main.component';
+import { OrderComponent } from './components/pages/order/order.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MainComponent } from './components/pages/main/main.component';
     FooterComponent,
     ProductCardComponent,
     MainComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,6 @@ import { MainComponent } from './components/pages/main/main.component';
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, HeaderComponent, FooterComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
