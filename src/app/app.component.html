@@ -20,19 +20,9 @@
         </h1>
       </div>
     </div>
-    <div class="row wow animate__bounceInRight">
-      <div class="col-lg-4 col-md-6 col-12 mb-4" *ngFor="let product of products">
-        <div class="product">
-          <a href="assets/images/{{product.imageBig}}" class="products__image">
-            <img src="assets/images/{{product.image}}" class="card-img-top mb-1" alt="Чай">
-          </a>
-          <div class="card-body m-md-1 pe-md-1">
-            <h5 class="card-title fw-bold titleForSearch">{{ product.title }}</h5>
-            <p class="card-text mt-1">{{ product.description }}</p>
-            <a href="#order" class="btn btn-primary mt-2 px-4" (click)="addToCart(product)"><span class="mx-3 px-1">Купить</span></a>
-          </div>
-        </div>
-      </div>
+    <div class="row">
+      <product-card class="col-lg-4 col-md-6 col-12 mb-4" *ngFor="let product of products"
+                    [product]="product" (addToCartEvent)="addToCart($event)"></product-card>
     </div>
   </div>
 </section>
@@ -120,25 +110,29 @@
           <div class="col-md-4">
             <label class="form-label w-100 mb-3">
               <span>Имя</span>
-              <input type="text" name="name" class="form-control mt-2 w-100" id="inputName" [(ngModel)]="formValues.name">
+              <input type="text" name="name" class="form-control mt-2 w-100" id="inputName"
+                     [(ngModel)]="formValues.name">
             </label>
           </div>
           <div class="col-md-4">
             <label class="form-label w-100 mb-3">
               <span>Фамилия</span>
-              <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname" [(ngModel)]="formValues.last_name">
+              <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname"
+                     [(ngModel)]="formValues.last_name">
             </label>
           </div>
           <div class="col-md-4">
             <label class="form-label w-100 mb-">
               <span>Телефон</span>
-              <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone" [(ngModel)]="formValues.phone">
+              <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone"
+                     [(ngModel)]="formValues.phone">
             </label>
           </div>
           <div class="col-md-6">
             <label class="form-label w-100 mb-3">
               <span>Страна</span>
-              <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry" [(ngModel)]="formValues.country">
+              <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry"
+                     [(ngModel)]="formValues.country">
             </label>
           </div>
           <div class="col-md-6">
@@ -151,19 +145,22 @@
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Адрес</span>
-              <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress" [(ngModel)]="formValues.address">
+              <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress"
+                     [(ngModel)]="formValues.address">
             </label>
           </div>
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Товар</span>
-              <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct" [(ngModel)]="formValues.product">
+              <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct"
+                     [(ngModel)]="formValues.product">
             </label>
           </div>
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Комментарий</span>
-              <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment" [(ngModel)]="formValues.comment"></textarea>
+              <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment"
+                        [(ngModel)]="formValues.comment"></textarea>
             </label>
           </div>
           <div class="col-md-3 pe-md-0">

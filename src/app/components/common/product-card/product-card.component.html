@@ -1,0 +1,13 @@
+<div class="product">
+  <a href="assets/images/{{product.imageBig}}" class="products__image">
+    <img src="assets/images/{{product.image}}" class="card-img-top mb-1" alt="Чай">
+  </a>
+  <div class="card-body m-md-1 pe-md-1">
+    <h5 class="card-title fw-bold titleForSearch">{{ product.title }}</h5>
+    <p class="card-text mt-1">{{ product.description }}</p>
+    <a href="#order" class="btn btn-primary mt-2 px-4" (click)="addProductToCart()"><span
+      class="mx-3 px-1">Купить</span></a>
+  </div>
+</div>
+
+<!--(click)="addToCart(product)"-->
