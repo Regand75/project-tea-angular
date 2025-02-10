@@ -5,7 +5,7 @@
   <div class="card-body m-md-1 pe-md-1">
     <h5 class="card-title fw-bold titleForSearch">{{ product.title }}</h5>
     <p class="card-text mt-1">{{ product.description }}</p>
-    <a href="#order" class="btn btn-primary mt-2 px-4" (click)="addProductToCart()"><span
+    <a routerLink="/order" class="btn btn-primary mt-2 px-4" (click)="addProductToCart()"><span
       class="mx-3 px-1">Купить</span></a>
   </div>
 </div>

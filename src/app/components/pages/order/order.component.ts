@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataProductService} from "../../../services/data-product.service";
 
 @Component({
   selector: 'app-order',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
+
+  constructor(private dataProductService: DataProductService) { }
 
   formValues = {
     name: '',
@@ -18,9 +21,10 @@ export class OrderComponent implements OnInit {
     comment: '',
   }
 
-  constructor() { }
-
   ngOnInit(): void {
+    if (this.dataProductService.product) {
+      this.formValues.product = this.dataProductService.product;
+    }
   }
 
 }
