@@ -71,6 +71,14 @@ h3.bg-primary {
   transition: transform 0.3s ease-in-out;
 }
 
+#popup {
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 @media screen and (max-width: 424px) {
   .arrow{
     display:none;

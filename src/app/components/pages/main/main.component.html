@@ -79,3 +79,17 @@
   </div>
 </section>
 
+<!-- Модальное окно -->
+<div class="modal fade" id="popup" #popup>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Посмотрите наши чайные коллекции</h5>
+      </div>
+      <div class="modal-body text-center">
+        <a routerLink="/products" class="btn btn-primary" (click)="closeModal()">Смотреть</a>
+      </div>
+    </div>
+  </div>
+</div>
+
