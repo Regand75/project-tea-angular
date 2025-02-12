@@ -1,0 +1,25 @@
+<section class="products">
+  <div class="container">
+    <div class="row text-center mb-sm-5 mb-4">
+      <div class="col-12">
+        <h1 class="mb-0 fs-2 fw-bold">
+          Наши чайные коллекции
+        </h1>
+      </div>
+    </div>
+    <div class="card w-50 text-center mx-auto">
+      <div class="products__image w-50 mx-auto">
+        <img src="{{product.image}}" class="card-img-top mb-1" alt="Чай">
+      </div>
+      <div class="card-body m-md-1 pe-md-1">
+        <h5 class="card-title fw-bold titleForSearch">{{ product.title }}</h5>
+        <p class="card-text mt-1">{{ product.description }}</p>
+        <p class="card-text mt-1"><span class="fw-bold">Цена: </span>{{ product.price }} руб.</p>
+        <a routerLink="/order" [queryParams]="{product: product.title}" class="btn btn-primary mt-2 px-4"><span
+          class="mx-3 px-1">Купить</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+

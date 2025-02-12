@@ -13,18 +13,14 @@ export class ProductCardComponent implements OnInit {
 
   constructor() {
     this.product = {
+      id: 0,
       image: '',
-      imageBig: '',
       title: '',
       description: '',
     }
   }
 
   ngOnInit(): void {
-  }
-
-  addProductToCart(): void {
-    this.addToCartEvent.emit(this.product);
   }
 
 }

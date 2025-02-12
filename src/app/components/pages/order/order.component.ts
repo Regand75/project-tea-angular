@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataProductService} from "../../../services/data-product.service";
+import {Subscription} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-order',
@@ -8,7 +10,7 @@ import {DataProductService} from "../../../services/data-product.service";
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private dataProductService: DataProductService) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   formValues = {
     name: '',
@@ -21,10 +23,14 @@ export class OrderComponent implements OnInit {
     comment: '',
   }
 
+  private subscription: Subscription | null = null;
+
   ngOnInit(): void {
-    if (this.dataProductService.product) {
-      this.formValues.product = this.dataProductService.product;
-    }
+    this.subscription = this.activatedRoute.queryParams.subscribe(params => {
+      if (params['product']) {
+        this.formValues.product = params['product'];
+      }
+    });
   }
 
 }

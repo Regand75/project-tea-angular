@@ -10,6 +10,9 @@ import { MainComponent } from './components/pages/main/main.component';
 import { OrderComponent } from './components/pages/order/order.component';
 import { ProductsComponent } from './components/pages/products/products.component';
 import {ProductService} from "./services/product.service";
+import {HttpClientModule} from "@angular/common/http";
+import { TextReductionPipe } from './pipes/text-reduction.pipe';
+import { ProductComponent } from './components/pages/product/product.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import {ProductService} from "./services/product.service";
     MainComponent,
     OrderComponent,
     ProductsComponent,
+    TextReductionPipe,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

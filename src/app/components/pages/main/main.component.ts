@@ -1,4 +1,11 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import * as $ from "jquery";
 import {Modal} from "bootstrap";
@@ -30,6 +37,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       this.showModal();
     })
   }
+
 
   ngAfterViewInit() {
     // Инициализация аккордеона
