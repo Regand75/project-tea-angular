@@ -9,57 +9,69 @@
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
-        <form class="row" action="#" method="post" id="form">
+        <form class="row" action="#" method="post" id="form" [formGroup]="dataForm">
           <div class="col-md-4">
-            <label class="form-label w-100 mb-3">
+            <label class="form-label w-100 mb-3"
+                   [class]="{'text-danger': name?.invalid && (name?.dirty || name?.touched)}">
               <span>Имя</span>
-              <input type="text" name="name" class="form-control mt-2 w-100" id="inputName" [(ngModel)]="formValues.name">
+              <input type="text" name="name" class="form-control mt-2 w-100" id="inputName"
+                     formControlName="name"
+                     required [class]="{'border-danger': name?.invalid && (name?.dirty || name?.touched)}">
             </label>
           </div>
           <div class="col-md-4">
             <label class="form-label w-100 mb-3">
               <span>Фамилия</span>
-              <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname" [(ngModel)]="formValues.last_name">
+              <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname"
+                     formControlName="last_name">
             </label>
           </div>
           <div class="col-md-4">
             <label class="form-label w-100 mb-">
               <span>Телефон</span>
-              <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone" [(ngModel)]="formValues.phone">
+              <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone"
+                     formControlName="phone">
             </label>
           </div>
           <div class="col-md-6">
             <label class="form-label w-100 mb-3">
               <span>Страна</span>
-              <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry" [(ngModel)]="formValues.country">
+              <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry"
+                     formControlName="country">
             </label>
           </div>
           <div class="col-md-6">
             <label class="form-label w-100 mb-3">
               <span>Индекс</span>
-              <input type="text" name="index" class="form-control mt-2 w-100" id="inputIndex" [(ngModel)]="formValues.zip">
+              <input type="text" name="index" class="form-control mt-2 w-100" id="inputIndex"
+                     formControlName="zip">
             </label>
           </div>
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Адрес</span>
-              <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress" [(ngModel)]="formValues.address">
+              <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress"
+                     formControlName="address">
             </label>
           </div>
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Товар</span>
-              <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct" [(ngModel)]="formValues.product">
+              <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct"
+                     formControlName="product">
             </label>
           </div>
           <div class="col-md-12">
             <label class="form-label w-100 mb-4">
               <span>Комментарий</span>
-              <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment" [(ngModel)]="formValues.comment"></textarea>
+              <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment"
+                        formControlName="comment"></textarea>
             </label>
           </div>
           <div class="col-md-3 pe-md-0">
-            <button type="submit" class="btn btn-primary w-100 hvr-push" id="inputButton">Отправить</button>
+            <button type="submit" class="btn btn-primary w-100 hvr-push" id="inputButton" (click)="sendingOrder()">
+              Отправить
+            </button>
           </div>
         </form>
       </div>

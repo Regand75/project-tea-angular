@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataProductService} from "../../../services/data-product.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-order',
@@ -10,27 +11,35 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  dataForm = new FormGroup({
+    name: new FormControl(''),
+    last_name: new FormControl(''),
+    phone: new FormControl(''),
+    country: new FormControl(''),
+    zip: new FormControl(''),
+    product: new FormControl(''),
+    address: new FormControl(''),
+    comment: new FormControl(''),
+  })
 
-  formValues = {
-    name: '',
-    last_name: '',
-    phone: '',
-    country: '',
-    zip: '',
-    product: '',
-    address: '',
-    comment: '',
-  }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   private subscription: Subscription | null = null;
 
   ngOnInit(): void {
     this.subscription = this.activatedRoute.queryParams.subscribe(params => {
       if (params['product']) {
-        this.formValues.product = params['product'];
+        this.dataForm.patchValue({
+          product: params['product'],
+        });
       }
     });
   }
+
+  sendingOrder() {
+    console.log(this.dataForm.value);
+  }
+
+  get name() {return this.dataForm.get('name');}
 
 }
