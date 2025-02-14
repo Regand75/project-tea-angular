@@ -9,14 +9,12 @@
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
-        <form class="row" action="#" method="post" id="form" [formGroup]="dataForm">
+        <form class="row" action="#" method="post" id="form" novalidate [formGroup]="dataForm">
           <div class="col-md-4">
-            <label class="form-label w-100 mb-3"
-                   [class]="{'text-danger': name?.invalid && (name?.dirty || name?.touched)}">
+            <label class="form-label w-100 mb-3">
               <span>Имя</span>
               <input type="text" name="name" class="form-control mt-2 w-100" id="inputName"
-                     formControlName="name"
-                     required [class]="{'border-danger': name?.invalid && (name?.dirty || name?.touched)}">
+                     formControlName="name">
             </label>
           </div>
           <div class="col-md-4">

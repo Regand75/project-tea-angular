@@ -79,6 +79,16 @@ h3.bg-primary {
   height: 100vh;
 }
 
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+label:has(> input.ng-invalid.ng-dirty),
+label:has(> input.ng-invalid.ng-touched) {
+  color: red;
+}
+
 @media screen and (max-width: 424px) {
   .arrow{
     display:none;

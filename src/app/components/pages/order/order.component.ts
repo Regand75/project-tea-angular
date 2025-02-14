@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DataProductService} from "../../../services/data-product.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-order',
@@ -11,18 +10,18 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class OrderComponent implements OnInit {
 
-  dataForm = new FormGroup({
-    name: new FormControl(''),
-    last_name: new FormControl(''),
-    phone: new FormControl(''),
-    country: new FormControl(''),
-    zip: new FormControl(''),
-    product: new FormControl(''),
-    address: new FormControl(''),
-    comment: new FormControl(''),
-  })
+  dataForm = this.fb.group({
+    name: ['', [Validators.required, Validators.pattern('^[a-zA-Zа-яА-ЯёЁ]+$')]],
+    last_name: ['', [Validators.required, Validators.pattern('^[a-zA-Zа-яА-ЯёЁ]+$')]],
+    phone: ['', [Validators.required, Validators.pattern('^\\+?\\d{11}$')]],
+    country: ['', [Validators.required]],
+    zip: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+    product: ['', [Validators.required]],
+    address: ['', [Validators.required, Validators.pattern('^[a-zA-Zа-яА-Я0-9\\s\\-\\/]+$')]],
+    comment: [''],
+  });
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private fb:FormBuilder, private activatedRoute: ActivatedRoute) { }
 
   private subscription: Subscription | null = null;
 
@@ -40,6 +39,6 @@ export class OrderComponent implements OnInit {
     console.log(this.dataForm.value);
   }
 
-  get name() {return this.dataForm.get('name');}
+  // get name() {return this.dataForm.get('name');}
 
 }
