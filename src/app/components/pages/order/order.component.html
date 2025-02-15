@@ -1,78 +1,144 @@
 <section class="order" id="order">
-  <div class="container py-sm-4 py-3  wow animate__backInUp">
-    <div class="row text-center mb-sm-5 mb-3">
-      <div class="col-12">
-        <h2 class="fw-bold">
-          Сделать заказ
-        </h2>
+  <div class="container py-sm-4 py-3">
+    <div *ngIf="!orderSuccess">
+      <div class="row text-center mb-sm-5 mb-3">
+        <div class="col-12">
+          <h2 class="fw-bold">
+            Сделать заказ
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+          <form class="row" action="#" method="post" id="form" novalidate [formGroup]="dataForm">
+            <div class="col-md-4">
+              <label class="form-label w-100 mt-3">
+                <span>Имя</span>
+                <input type="text" name="name" class="form-control mt-2 w-100" id="inputName"
+                       formControlName="name">
+              </label>
+              <div
+                *ngIf="dataForm.get('name')?.invalid && (dataForm.get('name')?.touched || dataForm.get('name')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('name')?.errors?.['required']">
+                  Укажите имя
+                </div>
+                <div class="invalid-feedback" *ngIf="dataForm.get('name')?.errors?.['pattern']">
+                  Имя должно содержать только буквы
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label w-100 mt-3">
+                <span>Фамилия</span>
+                <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname"
+                       formControlName="last_name">
+              </label>
+              <div
+                *ngIf="dataForm.get('last_name')?.invalid && (dataForm.get('last_name')?.touched || dataForm.get('last_name')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('last_name')?.errors?.['required']">
+                  Укажите фамилия
+                </div>
+                <div class="invalid-feedback" *ngIf="dataForm.get('last_name')?.errors?.['pattern']">
+                  Фамилия должно содержать только буквы
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label w-100 mt-3">
+                <span>Телефон</span>
+                <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone"
+                       formControlName="phone">
+              </label>
+              <div
+                *ngIf="dataForm.get('phone')?.invalid && (dataForm.get('phone')?.touched || dataForm.get('phone')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('phone')?.errors?.['required']">
+                  Укажите телефон
+                </div>
+                <div class="invalid-feedback" *ngIf="dataForm.get('phone')?.errors?.['pattern']">
+                  Телефон должно содержать 11 цифр
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label w-100 mt-3">
+                <span>Страна</span>
+                <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry"
+                       formControlName="country">
+              </label>
+              <div
+                *ngIf="dataForm.get('country')?.invalid && (dataForm.get('country')?.touched || dataForm.get('country')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('country')?.errors?.['required']">
+                  Укажите страну
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label w-100 mt-3">
+                <span>Индекс</span>
+                <input type="text" name="index" class="form-control mt-2 w-100" id="inputIndex"
+                       formControlName="zip">
+              </label>
+              <div *ngIf="dataForm.get('zip')?.invalid && (dataForm.get('zip')?.touched || dataForm.get('zip')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('zip')?.errors?.['required']">
+                  Укажите индекс
+                </div>
+                <div class="invalid-feedback" *ngIf="dataForm.get('zip')?.errors?.['pattern']">
+                  Индекс должно содержать только цифр
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label w-100 mt-3">
+                <span>Адрес</span>
+                <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress"
+                       formControlName="address">
+              </label>
+              <div
+                *ngIf="dataForm.get('address')?.invalid && (dataForm.get('address')?.touched || dataForm.get('address')?.dirty)">
+                <div class="invalid-feedback" *ngIf="dataForm.get('address')?.errors?.['required']">
+                  Укажите адрес
+                </div>
+                <div class="invalid-feedback" *ngIf="dataForm.get('address')?.errors?.['pattern']">
+                  Адрес должно содержать цифры, буквы, "-", "/"
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label w-100 mt-3">
+                <span>Товар</span>
+                <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct"
+                       formControlName="product">
+              </label>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label w-100 mt-3">
+                <span>Комментарий</span>
+                <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment"
+                          formControlName="comment"></textarea>
+              </label>
+            </div>
+            <div class="col-md-12 pe-md-0 mt-4 d-flex">
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100 hvr-push" id="inputButton"
+                        [disabled]="dataForm.invalid || isLoading" (click)="sendingOrder()">
+                  {{ isLoading ? 'Отправка...' : 'Отправить' }}
+                </button>
+              </div>
+              <div *ngIf="orderError" class="text-danger ms-3 w-100 d-inline lh-lg">
+                {{ orderError }}
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
-        <form class="row" action="#" method="post" id="form" novalidate [formGroup]="dataForm">
-          <div class="col-md-4">
-            <label class="form-label w-100 mb-3">
-              <span>Имя</span>
-              <input type="text" name="name" class="form-control mt-2 w-100" id="inputName"
-                     formControlName="name">
-            </label>
-          </div>
-          <div class="col-md-4">
-            <label class="form-label w-100 mb-3">
-              <span>Фамилия</span>
-              <input type="text" name="lastname" class="form-control mt-2 w-100" id="inputLastname"
-                     formControlName="last_name">
-            </label>
-          </div>
-          <div class="col-md-4">
-            <label class="form-label w-100 mb-">
-              <span>Телефон</span>
-              <input type="tel" name="phone" class="form-control mt-2 w-100" id="inputPhone"
-                     formControlName="phone">
-            </label>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label w-100 mb-3">
-              <span>Страна</span>
-              <input type="text" name="country" class="form-control mt-2 w-100" id="inputCountry"
-                     formControlName="country">
-            </label>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label w-100 mb-3">
-              <span>Индекс</span>
-              <input type="text" name="index" class="form-control mt-2 w-100" id="inputIndex"
-                     formControlName="zip">
-            </label>
-          </div>
-          <div class="col-md-12">
-            <label class="form-label w-100 mb-4">
-              <span>Адрес</span>
-              <input type="text" name="address" class="form-control mt-2 w-100" id="inputAddress"
-                     formControlName="address">
-            </label>
-          </div>
-          <div class="col-md-12">
-            <label class="form-label w-100 mb-4">
-              <span>Товар</span>
-              <input type="text" name="product" class="form-control mt-2 w-100" id="inputProduct"
-                     formControlName="product">
-            </label>
-          </div>
-          <div class="col-md-12">
-            <label class="form-label w-100 mb-4">
-              <span>Комментарий</span>
-              <textarea type="text" name="comment" class="form-control mt-2 w-100" id="inputComment"
-                        formControlName="comment"></textarea>
-            </label>
-          </div>
-          <div class="col-md-3 pe-md-0">
-            <button type="submit" class="btn btn-primary w-100 hvr-push" id="inputButton" (click)="sendingOrder()">
-              Отправить
-            </button>
-          </div>
-        </form>
-      </div>
+
+    <div *ngIf="orderSuccess" class="alert alert-success text-center">
+      <h4>Спасибо за заказ!</h4>
+    </div>
+
+    <div *ngIf="loading" class="loader-bg">
+      <div class="loader"></div>
     </div>
   </div>
 </section>
