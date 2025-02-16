@@ -38,7 +38,6 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-
   ngAfterViewInit() {
     // Инициализация аккордеона
     $('#accordion').accordion();
