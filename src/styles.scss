@@ -90,12 +90,8 @@ h3.bg-primary {
   transition: transform 0.3s ease-in-out;
 }
 
-#popup {
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
+.modal-content {
   align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
 
 input.ng-invalid.ng-dirty,
@@ -147,3 +143,6 @@ label:has(> input.ng-invalid.ng-touched) {
     display:none;
   }
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -3,12 +3,12 @@ import {
   Component,
   ElementRef,
   OnDestroy,
-  OnInit,
+  OnInit, TemplateRef,
   ViewChild
 } from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import * as $ from "jquery";
-import {Modal} from "bootstrap";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-main',
@@ -19,11 +19,11 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private observable: Observable<void>;
   private subscription: Subscription | null = null;
-  private modal: Modal | null = null;
+  private modalRef: any;
 
-  @ViewChild('popup') popup!: ElementRef;
+  @ViewChild('popup') popup!: TemplateRef<ElementRef>;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     this.observable = new Observable(observer => {
       setTimeout(() => {
         observer.next();
@@ -51,14 +51,13 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showModal(): void {
     if (this.popup) {
-      this.modal = new Modal(this.popup.nativeElement);
-      this.modal.show();
+      this.modalRef = this.modalService.open(this.popup, {});
     }
   }
 
   closeModal(): void {
-    if (this.modal) {
-        this.modal.hide();
+    if (this.modalRef) {
+        this.modalRef.close();
     }
   }
 

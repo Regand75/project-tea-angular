@@ -13,6 +13,7 @@ import {ProductService} from "./services/product.service";
 import {HttpClientModule} from "@angular/common/http";
 import { TextReductionPipe } from './pipes/text-reduction.pipe';
 import { ProductComponent } from './components/pages/product/product.component';
+import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProductComponent } from './components/pages/product/product.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
