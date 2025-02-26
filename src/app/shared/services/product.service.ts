@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {ProductType} from "../types/product.type";
+import {ProductType} from "../../../types/product.type";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
-import {ProductCardType} from "../types/product-card.type";
-import {OrderType} from "../types/order.type";
+import {ProductCardType} from "../../../types/product-card.type";
+import {OrderType} from "../../../types/order.type";
 
 @Injectable({providedIn: 'root'})
 export class ProductService {

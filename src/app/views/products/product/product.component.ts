@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../../services/product.service";
-import {ProductCardType} from "../../../types/product-card.type";
-import {ProductType} from "../../../types/product.type";
-import {DataProductService} from "../../../services/data-product.service";
+import {ProductService} from "../../../shared/services/product.service";
+import {ProductCardType} from "../../../../types/product-card.type";
+import {ProductType} from "../../../../types/product.type";
+import {DataProductService} from "../../../shared/services/data-product.service";
 
 @Component({
   selector: 'app-product',

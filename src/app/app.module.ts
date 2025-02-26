@@ -3,39 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HeaderComponent } from './components/common/header/header.component';
-import { FooterComponent } from './components/common/footer/footer.component';
-import { ProductCardComponent } from './components/common/product-card/product-card.component';
-import { MainComponent } from './components/pages/main/main.component';
-import { OrderComponent } from './components/pages/order/order.component';
-import { ProductsComponent } from './components/pages/products/products.component';
-import {ProductService} from "./services/product.service";
 import {HttpClientModule} from "@angular/common/http";
-import { TextReductionPipe } from './pipes/text-reduction.pipe';
-import { ProductComponent } from './components/pages/product/product.component';
-import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ProductsModule} from "./views/products/products.module";
+import {MainModule} from "./views/main/main.module";
+import {OrderModule} from "./views/order/order.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    ProductCardComponent,
-    MainComponent,
-    OrderComponent,
-    ProductsComponent,
-    TextReductionPipe,
-    ProductComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
+    MainModule,
+    OrderModule,
+    ProductsModule,
+    SharedModule,
+    AppRoutingModule,
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

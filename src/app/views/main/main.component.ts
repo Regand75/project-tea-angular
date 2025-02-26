@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import * as $ from "jquery";
-import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-main',

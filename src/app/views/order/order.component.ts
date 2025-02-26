@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Subscription, tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
-import {ProductService} from "../../../services/product.service";
+import {ProductService} from "../../shared/services/product.service";
 import {OrderType} from "../../../types/order.type";
 
 @Component({
